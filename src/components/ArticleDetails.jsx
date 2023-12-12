@@ -13,12 +13,11 @@ const ArticleDetails = () => {
 		getSingleArticle(article_id)
 			.then((article) => {
 				setSingleArticle(article);
-				console.log(article, "<-use effect article");
 				setIsLoading(false);
 			})
 			.catch((err) => {
 				setIsError(true);
-				setIsLoading(true);
+				setIsLoading(false);
 			});
 	}, [article_id]);
 

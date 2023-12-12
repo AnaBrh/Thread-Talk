@@ -102,3 +102,13 @@ h1 {
 #article-author {
 	color: #ffffff;
 }
+
+.burger-menu {
+	text-align:end;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
