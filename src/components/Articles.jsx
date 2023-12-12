@@ -5,23 +5,32 @@ import SingleArticle from "./SingleArticle";
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
 	const [isError, setIsError] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		getAllArticles()
 			.then((articles) => {
-                setArticles(articles);
+				setArticles(articles);
+				setIsLoading(false);
 			})
 			.catch((err) => {
-                setIsError(true);
+				setIsError(true);
+				setIsLoading(true);
 			});
-        }, []);
-        
-        return (
-            <div className="article-container">
+	}, []);
+
+	if (isError) {
+		return <p>Error loading the articles. Please try again later.</p>;
+	}
+
+	if (isLoading) {
+		return <p>Loading articles. Please wait.</p>;
+	}
+
+	return (
+		<div className="article-container">
 			{articles.map((article) => {
-                return (
-                <SingleArticle key={article.article_id} article={article} />
-                );
+				return <SingleArticle key={article.article_id} article={article}/>;
 			})}
 		</div>
 	);
