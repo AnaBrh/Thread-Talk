@@ -3,10 +3,13 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import CardGroup from "react-bootstrap/CardGroup";
 import { ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const SingleArticle = ({ article }) => {
-	const date = new Date(article.created_at)
-	const formattedDate = date.toDateString()
+	
+	const date = new Date(article.created_at);
+	const formattedDate = date.toDateString();
+
 	return (
 		<div className="overall-card-container">
 			<CardGroup>
@@ -20,7 +23,9 @@ const SingleArticle = ({ article }) => {
 							<Card.Text>Votes: {article.votes}</Card.Text>
 							<Card.Text>Created: {formattedDate}</Card.Text>
 						</ListGroup>
-						<Button id="view-button">View Article</Button>
+						<Link to={`/articles/${article.article_id}`}>
+							<Button id="view-button">View Article</Button>
+						</Link>
 					</Card.Body>
 				</Card>
 			</CardGroup>
