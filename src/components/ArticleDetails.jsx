@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import getSingleArticle from "../utils/getSingleArticle";
 import { useParams } from "react-router-dom";
-import getComments from "../utils/getComments";
+import Comments from "./Comments";
 
 const ArticleDetails = () => {
 	const { article_id } = useParams();
 	const [singleArticle, setSingleArticle] = useState([]);
-	const [comments, setComments] = useState([]);
 	const [isError, setIsError] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		getSingleArticle(article_id)
@@ -19,14 +18,6 @@ const ArticleDetails = () => {
 			.catch((err) => {
 				setIsError(true);
 				setIsLoading(false);
-			});
-
-		getComments(article_id)
-			.then((comments) => {
-				setComments(comments);
-			})
-			.catch((err) => {
-				setIsError(true);
 			});
 	}, [article_id]);
 
@@ -49,17 +40,21 @@ const ArticleDetails = () => {
 				<p id="article-topic">Topic: {singleArticle.topic}</p>
 				<p id="article-date">Created: {formattedDate}</p>
 				<p id="article-body">{singleArticle.body}</p>
-				<p id="article-votes">Votes: {singleArticle.votes}</p>
 			</div>
-			<div className="comments">
-				<h2 id="comments-title">{singleArticle.comment_count} Comments</h2>
-				{comments.map((comment) => (
-					<div key={comment.comment_id}>
-						<p id="comments-author">{comment.author}</p>
-						<p id="comments-body">{comment.body}</p>
-					</div>
-				))}
+			<div className="article-votes">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					height="24px"
+					viewBox="0 0 24 24"
+					width="24px"
+					fill="#000000"
+				>
+					<path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none" />
+					<path d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z" />
+				</svg>
+				<p id="article-votes-num">{singleArticle.votes}</p>
 			</div>
+			<Comments singleArticle={singleArticle}/>
 		</section>
 	);
 };

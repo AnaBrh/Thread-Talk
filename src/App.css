@@ -15,6 +15,8 @@
 	background-color: #272727;
 }
 
+/* Main Page */
+
 #title {
 	text-align: start;
 	font-weight: 700;
@@ -80,6 +82,7 @@ body {
 }
 
 .article-view-container {
+	justify-content: center;
 	max-width: 800px;
 	margin: 0 auto;
 	padding: 20px;
@@ -153,4 +156,22 @@ header {
 	font-weight: 500;
 	line-height: 1;
 	color: #72d5ff;
+}
+
+#comment-votes {
+	align-items:center;
+	padding-left: 0.6rem;
+}
+
+.comments-votes-box {
+		display: flex;
+}
+
+.article-votes {
+	display: flex;
+	justify-content:center
+}
+
+#article-votes-num {
+	padding-left: 0.6rem;
 }
