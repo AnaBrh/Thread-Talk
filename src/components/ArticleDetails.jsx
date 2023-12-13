@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import getSingleArticle from "../utils/getSingleArticle";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
+import CommentAdder from "./CommentAdder";
 import VoteAdder from "./VoteAdder";
 
 const ArticleDetails = () => {
@@ -29,6 +30,13 @@ const ArticleDetails = () => {
 		return <p>Error loading the page. Please try again later.</p>;
 	}
 
+	const addComment = (newComment) => {
+		setSingleArticle((prevArticle) => ({
+			...prevArticle,
+			comments: [...prevArticle.comments, newComment],
+		}));
+	};
+
 	const date = new Date(singleArticle.created_at);
 	const formattedDate = date.toDateString();
 
@@ -46,6 +54,7 @@ const ArticleDetails = () => {
 				article_id={singleArticle.article_id}
 				initialVotes={singleArticle.votes}
 			/>
+			<CommentAdder article_id={article_id} addComment={addComment} />
 			<Comments singleArticle={singleArticle} />
 		</section>
 	);
