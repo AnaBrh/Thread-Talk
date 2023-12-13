@@ -5,7 +5,7 @@ import SingleArticle from "./SingleArticle";
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
 	const [isError, setIsError] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		getAllArticles()
@@ -15,7 +15,7 @@ const Articles = () => {
 			})
 			.catch((err) => {
 				setIsError(true);
-				setIsLoading(true);
+				setIsLoading(false);
 			});
 	}, []);
 
