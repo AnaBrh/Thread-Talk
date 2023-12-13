@@ -15,6 +15,8 @@
 	background-color: #272727;
 }
 
+/* Main Page */
+
 #title {
 	text-align: start;
 	font-weight: 700;
@@ -47,8 +49,8 @@
 
 a {
 	font-weight: 500;
-	color: #646cff;
 	text-decoration: inherit;
+	color: #646cff;
 }
 a:hover {
 	color: #535bf2;
@@ -80,6 +82,7 @@ body {
 }
 
 .article-view-container {
+	justify-content: center;
 	max-width: 800px;
 	margin: 0 auto;
 	padding: 20px;
@@ -87,7 +90,7 @@ body {
 
 p {
 	margin-bottom: 10px;
-	color: #ffffff;
+	color: #000000;
 }
 
 h1 {
@@ -97,10 +100,32 @@ h1 {
 
 #article-title {
 	color: #ffffff;
+	padding-bottom: 1rem;
 }
 
 #article-author {
 	color: #ffffff;
+	padding-bottom: 1rem;
+}
+
+#article-body{
+	color: #ffffff;
+}
+
+#article-topic {
+	color: #ffffff;
+}
+
+#article-votes {
+	color: #ffffff;
+}
+
+#article-date {
+	color: #ffffff;
+}
+
+.article-details-box {
+	padding-top: 2rem;
 }
 
 .burger-menu {
@@ -111,4 +136,42 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.comments {
+	text-align: left;
+}
+
+#comments-body {
+	color: rgb(219, 219, 219);
+}
+
+#comments-title {
+	color: #ffffff;
+	padding-top: 3rem;
+	padding-bottom: 2rem;
+}
+
+#comments-author {
+	font-weight: 500;
+	line-height: 1;
+	color: #72d5ff;
+}
+
+#comment-votes {
+	align-items:center;
+	padding-left: 0.6rem;
+}
+
+.comments-votes-box {
+		display: flex;
+}
+
+.article-votes {
+	display: flex;
+	justify-content:center
+}
+
+#article-votes-num {
+	padding-left: 0.6rem;
 }
