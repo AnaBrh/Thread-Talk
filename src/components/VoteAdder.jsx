@@ -3,21 +3,20 @@ import patchVote from "../utils/patchVote";
 
 const VoteAdder = ({ article_id, initialVotes }) => {
 	const [votes, setVotes] = useState(initialVotes);
-    console.log(votes, "<- votes in state")
 
 	const handleVoteClick = () => {
 		setVotes((currVotes) => currVotes + 1);
 
 		patchVote(article_id)
 			.then((updatedArticle) => {
-                console.log(updatedArticle, "<-upd art")
 				setVotes(updatedArticle.votes);
 			})
 			.catch((err) => {
-                console.log(err)
-				// setVotes((previousVotes) => previousVotes - 1);
+				setVotes((previousVotes) => previousVotes - 1);
 			});
 	};
+
+	// NEED TO ADD ERR HANDLING -> user to be informed if something went wrong
 
 	return (
 		<div className="article-votes">

@@ -6,7 +6,6 @@ function patchVote(article_id) {
 	return api
     .patch(`/articles/${article_id}`, {inc_votes: 1})
     .then((response) => {
-		console.log(response.data.article)
 		return response.data.article;
 	});
 }
