@@ -4,24 +4,26 @@ import postComment from "../utils/postComment";
 const CommentAdder = ({ article_id, addComment }) => {
 	const [body, setBody] = useState("");
 	const [username, setUsername] = useState("");
-	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submissionStatus, setSubmissionStatus] = useState(null);
 
 	const handleCommentSubmit = (event) => {
 		event.preventDefault();
-		setIsSubmitting(true)
+		setIsSubmitting(true);
 
 		postComment(article_id, body, username)
 			.then((newComment) => {
 				addComment(newComment);
 				setBody("");
 				setUsername("");
+				setSubmissionStatus("success");
 			})
 			.catch((error) => {
-				console.error("Error posting comment", error);
+				setSubmissionStatus("error");
 			})
 			.finally(() => {
-				setIsSubmitting(false)
-			})
+				setIsSubmitting(false);
+			});
 	};
 
 	return (
@@ -42,7 +44,13 @@ const CommentAdder = ({ article_id, addComment }) => {
 				/>
 				<button type="submit" disabled={isSubmitting}>
 					{isSubmitting ? "Submitting..." : "Submit Comment"}
-					</button>
+				</button>
+				{submissionStatus === "success" && (
+					<p style={{ color: "green" }}> Comment submitted successfully! </p>
+				)}
+				{submissionStatus === "error" && (
+					<p style={{ color: "red" }}> Error submitting comment. Please try again. </p>
+				)}
 			</form>
 		</div>
 	);
