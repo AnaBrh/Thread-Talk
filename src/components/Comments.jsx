@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import getComments from "../utils/getComments";
+import getComments from "../utils/getComments"
 import { useParams } from "react-router-dom";
+import CommentAdder from "./CommentAdder";
 
-const Comments = ({ singleArticle }) => {
+const Comments = ({singleArticle}) => {
 	const { article_id } = useParams();
 	const [comments, setComments] = useState([]);
-	const [isError, setIsError] = useState(false);
+    const [isError, setIsError] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -20,6 +21,10 @@ const Comments = ({ singleArticle }) => {
 			});
 	}, [article_id]);
 
+	const addComment = (newComment) => {
+		setComments((prevComments) => [newComment, ...prevComments])
+	}
+
 	if (isLoading) {
 		return <p>Loading. Please wait.</p>;
 	}
@@ -30,6 +35,7 @@ const Comments = ({ singleArticle }) => {
 	return (
 		<div className="comments">
 			<h2 id="comments-title">{singleArticle.comment_count} Comments</h2>
+			<CommentAdder article_id={article_id} addComment={addComment} />
 			{comments.map((comment) => (
 				<div key={comment.comment_id}>
 					<p id="comments-author">{comment.author}</p>

@@ -225,3 +225,7 @@ header {
 	display: flex;
 	justify-content: center;
 }
+
+.comment-adder {
+	padding-bottom: 3rem;
+}

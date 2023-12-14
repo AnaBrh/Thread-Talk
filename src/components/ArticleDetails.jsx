@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import getSingleArticle from "../utils/getSingleArticle";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
+import CommentAdder from "./CommentAdder";
 import VoteAdder from "./VoteAdder";
 
 const ArticleDetails = () => {
