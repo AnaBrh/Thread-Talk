@@ -6,7 +6,12 @@ function getComments(article_id) {
 	return api
     .get(`/articles/${article_id}/comments`)
     .then((response) => {
-		return response.data.comments;
+		const comments = response.data.comments;
+
+		if (!comments || !Array.isArray(comments)) {
+			return [];
+		}
+		return comments;
 	});
 }
 
