@@ -16,7 +16,7 @@ const VoteAdder = ({ article_id, initialVotes }) => {
 			});
 	};
 
-	// NEED TO ADD ERR HANDLING -> user to be informed if something went wrong
+    	// NEED TO ADD ERR HANDLING -> user to be informed if something went wrong
 
 	return (
 		<div className="article-votes">

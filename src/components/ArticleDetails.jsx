@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import getSingleArticle from "../utils/getSingleArticle";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
-import CommentAdder from "./CommentAdder";
 import VoteAdder from "./VoteAdder";
 
 const ArticleDetails = () => {
@@ -10,6 +9,7 @@ const ArticleDetails = () => {
 	const [singleArticle, setSingleArticle] = useState([]);
 	const [isError, setIsError] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
+	const [selectedUser, setSelectedUser] = useState(null);
 
 	useEffect(() => {
 		getSingleArticle(article_id)
