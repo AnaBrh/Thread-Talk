@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import postComment from "../utils/postComment";
+import { UserContext, useUser } from "../contexts/UserContext";
 
-const CommentAdder = ({ article_id, addComment }) => {
+const CommentAdder = ({ article_id, addComment, deleteComment }) => {
 	const [body, setBody] = useState("");
-	const [username, setUsername] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submissionStatus, setSubmissionStatus] = useState(null);
+	const { currentUser } = useContext(UserContext)
+
 
 	const handleCommentSubmit = (event) => {
 		event.preventDefault();
 		setIsSubmitting(true);
 
-		postComment(article_id, body, username)
+		postComment(article_id, body, currentUser)
 			.then((newComment) => {
 				addComment(newComment);
 				setBody("");
-				setUsername("");
 				setSubmissionStatus("success");
 			})
 			.catch((error) => {
@@ -35,13 +36,6 @@ const CommentAdder = ({ article_id, addComment }) => {
 					placeholder="Add your comment..."
 					required
 				/>
-				<input
-					type="text"
-					value={username}
-					onChange={(event) => setUsername(event.target.value)}
-					placeholder="Your username..."
-					required
-				/>
 				<button type="submit" disabled={isSubmitting}>
 					{isSubmitting ? "Submitting..." : "Submit Comment"}
 				</button>
@@ -49,7 +43,10 @@ const CommentAdder = ({ article_id, addComment }) => {
 					<p style={{ color: "green" }}> Comment submitted successfully! </p>
 				)}
 				{submissionStatus === "error" && (
-					<p style={{ color: "red" }}> Error submitting comment. Please try again. </p>
+					<p style={{ color: "red" }}>
+						{" "}
+						Error submitting comment. Please try again.{" "}
+					</p>
 				)}
 			</form>
 		</div>

@@ -11,10 +11,7 @@
 
 body {
 	margin: 0;
-	display: flex;
 	place-items: center;
-	min-width: 320px;
-	min-height: 100vh;
 	background-color: #262626;
 }
 
@@ -44,6 +41,8 @@ body {
 h1 {
 	font-size: 2em;
 	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
 }
 
 p {
@@ -132,7 +131,22 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: sticky;
+	top: 0;
+	background-color: #272727;
 }
+
+.menu-currentuser {
+	display: flex;
+	justify-content: end;
+	align-content: center;
+	position: sticky;
+}
+
+#current-user {
+	text-align: end;
+	margin-top: 0.8rem;
+	}
 
 /* Article Styles */
 
@@ -145,12 +159,13 @@ header {
 #comments-title,
 #comments-author,
 #comments-body,
-#comment-votes {
+#comment-votes,
+#topics-title {
 	font-size: 16px;
 	color: #ffffff;
 }
 
-#article-title {
+#article-title, #topics-title {
 	padding-top: 1.6rem;
 	font-size: 23px;
 }
@@ -163,7 +178,8 @@ header {
 #article-author,
 #article-topic,
 #article-date,
-#article-body {
+#article-body,
+#topics-title {
 	padding-bottom: 1rem;
 }
 
@@ -190,7 +206,7 @@ header {
 }
 
 .card-group {
-	border-color: #2731ff;
+	border-color: #72d5ff;
 }
 
 #card-container {
@@ -228,4 +244,18 @@ header {
 
 .comment-adder {
 	padding-bottom: 3rem;
+}
+
+.user-cards {
+	border-color: #ffffff;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.2em;
+	margin-bottom: 0.5rem;
+	color: #ffffff;
+	cursor: pointer;
+	transition: border-color 0.25s;
+}
+.user-cards:hover {
+	border-color: #72d5ff;
 }

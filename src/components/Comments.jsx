@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
-import getComments from "../utils/getComments"
+import React, { useContext, useEffect, useState } from "react";
+import getComments from "../utils/getComments";
 import { useParams } from "react-router-dom";
 import CommentAdder from "./CommentAdder";
+import deleteComment from "../utils/deleteComment";
+import { UserContext } from "../contexts/UserContext";
 
-const Comments = ({singleArticle}) => {
+const Comments = ({ singleArticle }) => {
 	const { article_id } = useParams();
 	const [comments, setComments] = useState([]);
-    const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
+	const { currentUser } = useContext(UserContext);
 
 	useEffect(() => {
 		getComments(article_id)
@@ -22,8 +25,20 @@ const Comments = ({singleArticle}) => {
 	}, [article_id]);
 
 	const addComment = (newComment) => {
-		setComments((prevComments) => [newComment, ...prevComments])
-	}
+		setComments((prevComments) => [newComment, ...prevComments]);
+	};
+
+	const handleDeleteComment = (comment_id) => {
+		deleteComment(comment_id)
+			.then(() => {
+				setComments((prevComments) =>
+					prevComments.filter((comment) => comment.comment_id !== comment_id)
+				);
+			})
+			.catch((err) => {
+				setIsError(true);
+			});
+	};
 
 	if (isLoading) {
 		return <p>Loading. Please wait.</p>;
@@ -35,7 +50,12 @@ const Comments = ({singleArticle}) => {
 	return (
 		<div className="comments">
 			<h2 id="comments-title">{singleArticle.comment_count} Comments</h2>
-			<CommentAdder article_id={article_id} addComment={addComment} />
+			<CommentAdder
+				article_id={article_id}
+				addComment={addComment}
+				deleteComment={handleDeleteComment}
+				currentUser={currentUser}
+			/>
 			{comments.map((comment) => (
 				<div key={comment.comment_id}>
 					<p id="comments-author">{comment.author}</p>
@@ -53,6 +73,11 @@ const Comments = ({singleArticle}) => {
 						</svg>
 						<p id="comment-votes">{comment.votes}</p>
 					</div>
+					{currentUser && currentUser === comment.author && (
+						<button onClick={() => handleDeleteComment(comment.comment_id)}>
+							Delete Comment
+						</button>
+					)}
 				</div>
 			))}
 		</div>

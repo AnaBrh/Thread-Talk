@@ -6,7 +6,7 @@ import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const SingleArticle = ({ article }) => {
-	
+
 	const date = new Date(article.created_at);
 	const formattedDate = date.toDateString();
 
