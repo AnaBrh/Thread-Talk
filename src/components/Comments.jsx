@@ -59,6 +59,17 @@ const Comments = ({ singleArticle }) => {
 			{comments.map((comment) => (
 				<div key={comment.comment_id}>
 					<p id="comments-author">{comment.author}</p>
+					<p>
+						{" "}
+						{new Date(comment.created_at).toLocaleDateString(undefined, {
+							year: "numeric",
+							month: "long",
+							day: "numeric",
+							hour: "2-digit",
+							minute: "2-digit",
+							hour12: true
+						})}
+					</p>
 					<p id="comments-body">{comment.body}</p>
 					<div className="comments-votes-box">
 						<svg

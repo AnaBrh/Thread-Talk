@@ -49,7 +49,10 @@ export default function BasicMenu() {
 				</MenuItem>
 				<MenuItem onClick={handleClose}> {" "}
 					<Link to="/topics"> Topics </Link> </MenuItem>
-				<MenuItem onClick={handleClose}> Users </MenuItem>
+				<MenuItem onClick={handleClose}>
+					{" "}
+					<Link to="/users"> Users </Link>
+				</MenuItem>
 			</Menu>
 		</div>
 	);
