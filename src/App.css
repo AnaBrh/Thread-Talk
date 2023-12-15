@@ -29,15 +29,23 @@ body {
 	margin: 0 auto;
 }
 
-@media screen and (max-width: 1200px) {
+/* Media Queries*/
+
+@media screen and (max-width: 600px) {
 	.article-view-container {
 		width: 90%;
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 601px) and (max-width: 1200px) {
 	.article-view-container {
-		width: 90%;
+		width: 80%;
+	}
+}
+
+@media screen and (min-width: 1201px) {
+	.article-view-container {
+		width: 60%;
 	}
 }
 
@@ -51,7 +59,7 @@ h1 {
 }
 
 p {
-	margin-bottom: 10px;
+	color: #ffffff;
 }
 
 #title {
@@ -160,7 +168,7 @@ header {
 #current-user {
 	text-align: end;
 	margin-top: 0.8rem;
-	font-size:medium;
+	font-size: medium;
 	color: #72d5ff;
 }
 
@@ -214,7 +222,23 @@ header {
 
 .card-body {
 	background-color: #72d5ff;
-	margin: 1rem 1rem 1rem 1rem;
+}
+
+.card-title.card-title.h5 {
+	/* background-color: #0d4157; */
+	min-height: 75px;
+}
+
+#card-footer {
+	width: 100%;
+	border-color: #000000;
+	margin-top: 1rem;
+	background-color: #72d5ff;
+	font-weight: 500;
+}
+
+#card-footer.card-footer {
+	/* min-height: 100px; */
 }
 
 #card-list-group {
@@ -227,20 +251,36 @@ header {
 
 .card-group {
 	border-color: #72d5ff;
-	max-width: 350px;
+	min-width: 260px;
+	max-width: 385px;
 	margin: auto;
 }
 
 #card-container {
 	background-color: #72d5ff;
-	margin: 1.5rem;
+}
+
+.card-header {
+	min-height: 230px;
 }
 
 .card-img-top {
 	max-height: 300px;
-	max-width: 300px;
-	object-fit: scale-down;
+	max-width: 350px;
+	min-height: 210px;
+	object-fit: cover;
 	margin: auto;
+}
+
+.overall-card-container {
+	margin: 1em;
+}
+
+.article-container {
+	background-color: #0d4157;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 /* Comments Styles */
@@ -256,9 +296,13 @@ header {
 }
 
 #comments-author {
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 1;
 	color: #72d5ff;
+}
+
+#comments-date {
+	color: #d1d1d1;
 }
 
 #comment-votes {
@@ -285,7 +329,7 @@ header {
 
 .comment-adder form {
 	width: 100%;
-	max-width: 600px;
+	max-width: 400px;
 }
 
 .comment-adder textarea {
@@ -296,8 +340,8 @@ header {
 
 .comment-adder button {
 	background-color: #72d5ff;
-	width: 40%;
-	margin-bottom: 1rem;
+	width: 60%;
+	margin-bottom: 2rem;
 	border-radius: 4rem;
 	border: 1px solid transparent;
 	font-size: 1em;
