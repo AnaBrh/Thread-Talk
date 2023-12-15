@@ -296,7 +296,6 @@ header {
 }
 
 .article-container {
-	background-color: #0d4157;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
