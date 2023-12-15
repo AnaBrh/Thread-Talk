@@ -36,13 +36,13 @@ const Users = () => {
 
 	return (
 		<div className="user-container">
-			<h1 id="topics-title">Choose a user to login</h1>
+			<h1 id="title">Choose a user to login</h1>
 			{users.map((user) => {
 				return (
 					<li key={user.username}>
 						<CardGroup className="user-cards" onClick={() => handleUserClick(user.username)}>
 							<Card>
-								<Card.Img variant="top" src={user.avatar_url} />
+								<Card.Img id="user-img" variant="top" src={user.avatar_url} />
 								<Card.Body>
 									<Card.Title>{user.name}</Card.Title>
 									<ListGroup>
