@@ -9,7 +9,7 @@ You can find the API [**here**](https://thread-talk.onrender.com/api) and the Gi
 This app is intended to simulate a service similar to Reddit. It has basic functionality such as the user being able to navigate between pages, browse articles, as well as vote and post/delete comments on articles.
 
 Currently there is a hard-coded list of users to login as that are provided in the API, making it possible to post comments and delete your own comments as that user.
-This leaves space for extra functionality to be added, such as a user authentication page, posting/deleting articles etc.
+This leaves space for extra functionality to be added, such as a user authentication page, posting/deleting articles, sorting and filtering articles etc.
 
 You can find the hosted version of the app [here](https://thread-talk-app.netlify.app/).
 
