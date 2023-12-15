@@ -28,7 +28,7 @@ const Topics = () => {
 
 	return (
 		<div className="articles-container">
-			<h1 id="topics-title">Topics</h1>
+			<h1 id="title">Topics</h1>
 			{topics.map((topic) => {
 				return <SingleTopics key={topic.slug} topic={topic} />;
 			})}

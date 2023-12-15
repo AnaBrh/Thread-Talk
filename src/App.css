@@ -72,6 +72,19 @@ p {
 	font-weight: 600;
 }
 
+#card-title-topic {
+	font-size: 40px;
+	font-weight: 600;
+}
+
+#card-title-topic.card-title.h5 {
+min-height: 0;
+}
+
+#card-list-group-topic {
+	padding-top: 0;
+}
+
 .card-text {
 	color: #000000;
 }
@@ -215,6 +228,12 @@ header {
 	height: auto;
 }
 
+#user-img {
+	max-width: 100%;
+	height: auto;
+	object-fit:scale-down;
+}
+
 #article-votes-num {
 	margin-bottom: 0;
 	margin-left: 0.5rem;
@@ -225,7 +244,6 @@ header {
 }
 
 .card-title.card-title.h5 {
-	/* background-color: #0d4157; */
 	min-height: 75px;
 }
 
@@ -274,6 +292,11 @@ header {
 
 .overall-card-container {
 	margin: 1em;
+}
+
+.overall-card-container-topics {
+	margin: 1em;
+	padding-bottom: 1px;
 }
 
 .article-container {
