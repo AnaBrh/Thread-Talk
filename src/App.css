@@ -255,10 +255,6 @@ header {
 	font-weight: 500;
 }
 
-#card-footer.card-footer {
-	/* min-height: 100px; */
-}
-
 #card-list-group {
 	font-weight: 400;
 	line-height: 1;
