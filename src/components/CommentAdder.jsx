@@ -1,8 +1,12 @@
 import React, { useContext, useState } from "react";
 import postComment from "../utils/postComment";
-import { UserContext, useUser } from "../contexts/UserContext";
+import { UserContext } from "../contexts/UserContext";
 
-const CommentAdder = ({ article_id, addComment, deleteComment }) => {
+// COMMENT COUNTER CHARS
+// USER FEEDBACK -> NEED TO BE LOGGED IN TO COMMENT
+// ADD VOTING BUTTON FOR COMMENTS + DOWNVOTE
+
+const CommentAdder = ({ article_id, addComment }) => {
 	const [body, setBody] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submissionStatus, setSubmissionStatus] = useState(null);
@@ -45,7 +49,7 @@ const CommentAdder = ({ article_id, addComment, deleteComment }) => {
 				{submissionStatus === "error" && (
 					<p style={{ color: "red" }}>
 						{" "}
-						Error submitting comment. Please try again.{" "}
+						Failed to post comment. You need to be logged in.{" "}
 					</p>
 				)}
 			</form>

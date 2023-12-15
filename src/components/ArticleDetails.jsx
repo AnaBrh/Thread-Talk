@@ -7,9 +7,8 @@ import VoteAdder from "./VoteAdder";
 const ArticleDetails = () => {
 	const { article_id } = useParams();
 	const [singleArticle, setSingleArticle] = useState([]);
-	const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
-	const [selectedUser, setSelectedUser] = useState(null);
 
 	useEffect(() => {
 		getSingleArticle(article_id)
@@ -18,7 +17,7 @@ const ArticleDetails = () => {
 				setIsLoading(false);
 			})
 			.catch((err) => {
-				setIsError(true);
+				setIsError(err.response.data.msg);
 				setIsLoading(false);
 			});
 	}, [article_id]);
@@ -27,7 +26,7 @@ const ArticleDetails = () => {
 		return <p>Loading. Please wait.</p>;
 	}
 	if (isError) {
-		return <p>Error loading the page. Please try again later.</p>;
+		return (<p>Error loading the page. {isError}.</p>);
 	}
 
 	const date = new Date(singleArticle.created_at);

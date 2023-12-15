@@ -10,7 +10,7 @@ const Users = () => {
 	const { setCurrentUser } = useContext(UserContext)
 	const [users, setUsers] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(null);
 
 	const handleUserClick = (username) => {
 		setCurrentUser(username);
@@ -23,9 +23,16 @@ const Users = () => {
 				setIsLoading(false);
 			})
 			.catch((err) => {
-				setIsError(true);
+				setIsError(err.response.data.msg);
 			});
 	}, [setCurrentUser]);
+
+	if (isError) {
+		return <p>Error loading the users. {isError}.</p>;
+	}
+	if (isLoading) {
+		return <p>Loading users. Please wait.</p>;
+	}
 
 	return (
 		<div className="user-container">

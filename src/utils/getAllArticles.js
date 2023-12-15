@@ -7,7 +7,7 @@ function getAllArticles() {
 	.get(`/articles`)
 	.then((response) => {
 		return response.data.articles;
-	});
+	})
 }
 
 export default getAllArticles;

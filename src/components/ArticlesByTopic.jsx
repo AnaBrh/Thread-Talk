@@ -1,4 +1,3 @@
-// ArticlesByTopic.jsx
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import getArticlesByTopic from "../utils/getArticlesByTopic";
@@ -8,7 +7,7 @@ import { Link } from "react-router-dom";
 const ArticlesByTopic = () => {
 	const { slug } = useParams();
 	const [articles, setArticles] = useState([]);
-	const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -18,13 +17,13 @@ const ArticlesByTopic = () => {
 				setIsLoading(false);
 			})
 			.catch((err) => {
-				setIsError(true);
+				setIsError(err.response.data.msg);
 				setIsLoading(false);
 			});
 	}, [slug]);
 
 	if (isError) {
-		return <p>Error loading articles for this topic. Please try again later.</p>;
+		return <p>Error loading articles for this topic. {isError}.</p>;
 	}
 	if (isLoading) {
 		return <p>Loading articles. Please wait.</p>;

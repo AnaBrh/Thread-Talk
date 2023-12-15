@@ -5,10 +5,12 @@ import CommentAdder from "./CommentAdder";
 import deleteComment from "../utils/deleteComment";
 import { UserContext } from "../contexts/UserContext";
 
+// ADD user feedback for adding/deleting comments
+
 const Comments = ({ singleArticle }) => {
 	const { article_id } = useParams();
 	const [comments, setComments] = useState([]);
-	const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const { currentUser } = useContext(UserContext);
 
@@ -19,7 +21,7 @@ const Comments = ({ singleArticle }) => {
 				setIsLoading(false);
 			})
 			.catch((err) => {
-				setIsError(true);
+				setIsError(err.response.data.msg);
 				setIsLoading(false);
 			});
 	}, [article_id]);
@@ -41,10 +43,10 @@ const Comments = ({ singleArticle }) => {
 	};
 
 	if (isLoading) {
-		return <p>Loading. Please wait.</p>;
+		return <p>Loading comments. Please wait.</p>;
 	}
 	if (isError) {
-		return <p>Error loading the page. Please try again later.</p>;
+		return <p>Error loading the page. {isError}.</p>;
 	}
 
 	return (
