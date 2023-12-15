@@ -5,7 +5,6 @@ import { useContext } from "react";
 
 const Header = () => {
 	const { currentUser } = useContext(UserContext)
-	console.log(currentUser)
 	
 	return (
 		<header className="header">

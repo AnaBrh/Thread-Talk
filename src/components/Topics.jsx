@@ -4,7 +4,7 @@ import SingleTopics from "./SingleTopics";
 
 const Topics = () => {
 	const [topics, setTopics] = useState([]);
-	const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -14,13 +14,13 @@ const Topics = () => {
 				setIsLoading(false);
 			})
 			.catch((err) => {
-				setIsError(true);
+				setIsError(err.response.data.msg);
 				setIsLoading(false);
 			});
 	}, []);
 
 	if (isError) {
-		return <p>Error loading the topics. Please try again later.</p>;
+		return <p>Error loading the topics. {isError}.</p>;
 	}
 	if (isLoading) {
 		return <p>Loading topics. Please wait.</p>;

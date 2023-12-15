@@ -18,7 +18,6 @@ body {
 /* Container Styles */
 
 #root {
-	max-width: 1440px;
 	margin: auto;
 	padding: 1em;
 	text-align: center;
@@ -28,6 +27,12 @@ body {
 .article-view-container {
 	width: 80%;
 	margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+	.article-view-container {
+		width: 90%;
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -47,7 +52,6 @@ h1 {
 
 p {
 	margin-bottom: 10px;
-	color: #000000;
 }
 
 #title {
@@ -58,6 +62,15 @@ p {
 
 #card-title {
 	font-weight: 600;
+}
+
+.card-text {
+	color: #000000;
+}
+
+#error-title {
+	color: #ffffff;
+	padding-top: 5rem;
 }
 
 /* Link Styles */
@@ -104,7 +117,7 @@ a:hover {
 }
 
 #view-button:hover {
-	background-color:#0d4157;
+	background-color: #0d4157;
 	border-color: #ffffff;
 }
 
@@ -132,6 +145,7 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	position: sticky;
+	z-index: 1;
 	top: 0;
 	background-color: #272727;
 }
@@ -146,11 +160,14 @@ header {
 #current-user {
 	text-align: end;
 	margin-top: 0.8rem;
-	}
+	font-size:medium;
+	color: #72d5ff;
+}
 
 /* Article Styles */
 
 #article-title,
+#articles-title,
 #article-author,
 #article-topic,
 #article-date,
@@ -165,7 +182,9 @@ header {
 	color: #ffffff;
 }
 
-#article-title, #topics-title {
+#article-title,
+#articles-title,
+#topics-title {
 	padding-top: 1.6rem;
 	font-size: 23px;
 }
@@ -195,6 +214,7 @@ header {
 
 .card-body {
 	background-color: #72d5ff;
+	margin: 1rem 1rem 1rem 1rem;
 }
 
 #card-list-group {
@@ -207,10 +227,20 @@ header {
 
 .card-group {
 	border-color: #72d5ff;
+	max-width: 350px;
+	margin: auto;
 }
 
 #card-container {
 	background-color: #72d5ff;
+	margin: 1.5rem;
+}
+
+.card-img-top {
+	max-height: 300px;
+	max-width: 300px;
+	object-fit: scale-down;
+	margin: auto;
 }
 
 /* Comments Styles */
@@ -242,9 +272,48 @@ header {
 	justify-content: center;
 }
 
-.comment-adder {
-	padding-bottom: 3rem;
+.comments-votes-box {
+	display: flex;
+	justify-content: start;
 }
+
+.comment-adder {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+.comment-adder form {
+	width: 100%;
+	max-width: 600px;
+}
+
+.comment-adder textarea {
+	width: 100%;
+	margin-bottom: 10px;
+	border-radius: 1rem;
+}
+
+.comment-adder button {
+	background-color: #72d5ff;
+	width: 40%;
+	margin-bottom: 1rem;
+	border-radius: 4rem;
+	border: 1px solid transparent;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+	color: #000000;
+	cursor: pointer;
+	transition: border-color 0.25s;
+}
+
+.comment-adder button:hover {
+	background-color: #0d4157;
+	border-color: #ffffff;
+}
+
+/* User styles */
 
 .user-cards {
 	border-color: #ffffff;

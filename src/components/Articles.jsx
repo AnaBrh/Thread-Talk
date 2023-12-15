@@ -4,7 +4,7 @@ import SingleArticle from "./SingleArticle";
 
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
-	const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -14,13 +14,13 @@ const Articles = () => {
 				setIsLoading(false);
 			})
 			.catch((err) => {
-				setIsError(true);
+				setIsError(err.response.data.msg);
 				setIsLoading(false);
 			});
 	}, []);
 
 	if (isError) {
-		return <p>Error loading the articles. Please try again later.</p>;
+		return <p>Error loading the articles. {isError}.</p>;
 	}
 
 	if (isLoading) {

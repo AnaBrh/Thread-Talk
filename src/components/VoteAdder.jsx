@@ -1,6 +1,9 @@
 import { useState } from "react";
 import patchVote from "../utils/patchVote";
 
+// ERR HANDLING -> user to be informed if something went wrong
+// undo vote? + add downvote with undo on click
+
 const VoteAdder = ({ article_id, initialVotes }) => {
 	const [votes, setVotes] = useState(initialVotes);
 
@@ -15,8 +18,6 @@ const VoteAdder = ({ article_id, initialVotes }) => {
 				setVotes((previousVotes) => previousVotes - 1);
 			});
 	};
-
-    	// NEED TO ADD ERR HANDLING -> user to be informed if something went wrong
 
 	return (
 		<div className="article-votes">
