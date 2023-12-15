@@ -17,7 +17,7 @@ You can find the hosted version of the app [here](https://thread-talk-app.netlif
 
 ### Minimum requirements
 
-- **Node **: minimum version v20.8.0, you can download Node.Js [**here**](https://nodejs.org/en)
+- **Node**: minimum version v20.8.0, you can download Node.Js [**here**](https://nodejs.org/en)
 
 ### How to run it
 
@@ -39,6 +39,6 @@ code <folder name>
 
 4. **Host a local version** by running `npm run dev`.
 
->If at any point you want to stop your script from running, click on the terminal and just press `CTRL+C`(Windows) or `Command+C`(Mac)
+>If at any point you want to stop your script from running, click on the terminal and just press `CTRL+C`(Windows) or `Command+C`(Mac). Just remember to run `npm run dev` again to resume hosting.
 
 5. **Happy coding!** :smile_cat:
